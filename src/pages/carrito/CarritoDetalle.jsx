@@ -9,8 +9,8 @@ const CarritoDetalle = () => {
   return (
     <>
       <CarritoSeccion>
-        {itemsCarrito.map((products) => (
-          <CarritoDetalleProducto {...products} key={products.id} />
+        {itemsCarrito.map((productos) => (
+          <CarritoDetalleProducto {...productos} key={productos.id} />
         ))}
       </CarritoSeccion>
     </>
