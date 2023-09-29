@@ -6,8 +6,8 @@ import { products } from '../../data/Productos';
 
 const CardsProductos = () => {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [limit, setLimit] = useState(6); // Agrega un estado para el límite inicial de productos a mostrar
-  const INITIAL_LIMIT = 6; // Establece el valor inicial del límite
+  const [limit, setLimit] = useState(6);
+  const INITIAL_LIMIT = 6;
 
   const filteredProducts = products.filter((producto) => {
     if (selectedCategory === "Todos") {
@@ -61,7 +61,7 @@ const CardsProductos = () => {
           )}
           <Button
             onClick={() => setLimit((prevLimit) => prevLimit + INITIAL_LIMIT)}
-            disabled={limit >= totalProducts} // Modificar esta condición
+            disabled={limit >= totalProducts}
           
           >
             Ver más
