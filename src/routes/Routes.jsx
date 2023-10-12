@@ -6,7 +6,8 @@ import Home from '../pages/Home/Home'
 import Productos from '../pages/Productos/CardsProductos'
 import AboutUs from '../pages/AboutUs/AboutUs'
 import PageNotFound from '../pages/PageNotFound/PageNotFound'
-import { CarritoPage } from "../pages/carrito/CarritoPage"
+import Login from '../pages/Login/Login'
+import Register from '../pages/Register/Register'
 
 
 const Routes = () => {
@@ -20,7 +21,8 @@ const Routes = () => {
         <Route path='Contacto' element={<Contacto/>} />
         <Route path='AboutUs' element={<AboutUs/>} />
         <Route path ='*' element={<PageNotFound/>}/>
-        <Route path='Checkout' element={<CarritoPage/>} />
+        <Route path ='Login'element={<Login/>}/>
+        <Route path="/register" element={<Register />} />
       </ReactDomRoutes>
     </Layout>
     </BrowserRouter>

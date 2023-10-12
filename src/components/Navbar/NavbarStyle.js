@@ -157,28 +157,49 @@ export const Carrito = styled.div`
   display: none;
 
   &.openCart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+  
     display: flex;
     flex-direction: column;
-    text-align: center;
-    position: absolute;
-    background-color: #fff;
-    width: 280px;
-    height: 600px;
-    top: 90px;
-    right: 0;
-    padding: 1rem;
-    gap: 1rem;
-    border: 2px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    justify-content: space-between;
+    gap: 30px;
+  
+    width: 450px;
+    height: calc(100vh - 4rem);
+  
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 0 0 0 1rem;
+    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
+    
+    @media (max-width: 500px) {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      width: 250px; 
   }
+  }
+
+ 
 `;
 
 export const ContenedorCarrito = styled.div`
-  gap: 0.3rem;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-  max-height: 20rem;
-  height: 20rem;
+gap: 30px;
+margin: 35px;
+width: 350px;
+
+background: var(--gray-bg);
+box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+padding: 1rem;
+border-radius: 15px;
+
+@media (max-width: 500px) {
+  width: 200px;
+  display:flex;
+  flex-direction: center;
+  margin: 0px 15px;
+}
 `;

@@ -50,23 +50,25 @@ const CardsProductos = () => {
 
       {totalProducts > INITIAL_LIMIT && (
         <ButtonContainerStyled>
-          {!selectedCategory && (
-            <Button
-              onClick={() => setLimit((prevLimit) => prevLimit - INITIAL_LIMIT)}
-              secondary='true'
-              disabled={INITIAL_LIMIT === limit}
-            >
-              <span>Ver menos</span>
-            </Button>
-          )}
+        {limit > INITIAL_LIMIT && (
+          <Button
+            onClick={() => setLimit((prevLimit) => prevLimit - INITIAL_LIMIT)}
+            secondary='true'
+            disabled={INITIAL_LIMIT === limit}
+          >
+            <span>Ver menos</span>
+          </Button>
+        )}
+        {limit < totalProducts && (
           <Button
             onClick={() => setLimit((prevLimit) => prevLimit + INITIAL_LIMIT)}
             disabled={limit >= totalProducts}
-          
           >
             Ver más
           </Button>
-        </ButtonContainerStyled>
+        )}
+      </ButtonContainerStyled>
+      
       )}
     </ProductoWrapper>
   );

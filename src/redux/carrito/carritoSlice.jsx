@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+const toggleHiddenCart = () => {
+  return { type: "TOGGLE_HIDDEN_CART"};
+}
 const initialState = {
   itemsCarrito: [],
 };

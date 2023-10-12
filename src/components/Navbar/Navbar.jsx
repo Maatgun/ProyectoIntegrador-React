@@ -13,7 +13,7 @@ import {
   LinksContainer,
   NavLinkStyled,
 } from "./NavbarStyle";
-import { ButtonCart, BelowCarrito, LinkCarrito } from "./CarritoStyle";
+import { ButtonCart, BelowCarrito } from "./CarritoStyle";
 import { RxAvatar } from "react-icons/rx";
 import { BsFillBagHeartFill } from "react-icons/bs";
 import { HiMenu } from "react-icons/hi";
@@ -128,7 +128,7 @@ const Navbar = () => {
         )}
 
         <BtnNavbar>
-          <LinkContainerInicioSesion href="#">
+          <LinkContainerInicioSesion href="/Login">
             <RxAvatar/>
           </LinkContainerInicioSesion>
           <ButtonCartLogo onClick={() => dispatch({ type: "toggle_cart" })}>
@@ -140,7 +140,7 @@ const Navbar = () => {
               <BsCart4 />
               Mi carrito
             </p>
-            {itemsCarrito.length === 0 && <p>No hay productos en el carrito</p>}
+            {itemsCarrito.length === 0 && <p>No hay productos en su carrito</p>}
             <ContenedorCarrito>
               {itemsCarrito.map((producto) => (
                 <CarritoContainer {...producto} key={producto.id} />
@@ -149,12 +149,11 @@ const Navbar = () => {
 
             {itemsCarrito.length !== 0 && (
               <BelowCarrito>
-                <p style={{ border: "1px solid", margin: "0 4rem" }}>
-                  Total $<span>{totalDeCompra.toLocaleString("es")}</span>
+                <p style={{margin: "0 4rem" }}>
+                  Total $<span>{totalDeCompra.toFixed(2)}</span>
                 </p>
                 <ButtonCart onClick={comprarCarrito}>Comprar</ButtonCart>
-                <ButtonCart onClick={borrarTodoCarrito}>Borrar todo</ButtonCart>
-                <LinkCarrito to="checkout">Ir al carrito</LinkCarrito>
+                <ButtonCart onClick={borrarTodoCarrito}>Vaciar</ButtonCart>
               </BelowCarrito>
             )}
           </Carrito>
@@ -165,7 +164,7 @@ const Navbar = () => {
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
         aceptarClick={carritoComprado ? () => { dispatchRedux(borrarCarrito()) } : () => { dispatchRedux(borrarCarrito()) }}
-        mensaje={carritoComprado ? "¿Desea realizar la compra?" : "¿Desea borrar todo el carrito?"}
+        mensaje={carritoComprado ? "¿Desea realizar la compra?" : "¿Desea vaciar el carrito?"}
       />
     </>
   );

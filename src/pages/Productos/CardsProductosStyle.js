@@ -116,3 +116,18 @@ export const BtnStyle = styled.div`
     
   }
 `;
+
+export const BtnAdd = styled.div`
+background-color: #63C363;
+color: #fff;
+border: none;
+padding: 10px 20px;
+margin: 5px;
+cursor: pointer;
+border-radius: 15px;
+transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;

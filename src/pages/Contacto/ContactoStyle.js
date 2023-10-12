@@ -36,7 +36,3 @@ export const ContactoStyled = styled.div`
   }
 
 `;
-
-export const ButtonStyled = styled.button`
-
-`

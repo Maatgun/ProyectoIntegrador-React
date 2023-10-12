@@ -1,32 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'; // Importa useDispatch
-import { CardPrice, ContainerPrice, ProductosCard } from './CardsProductosStyle';
-import Button from '../../components/UI/Button/Button';
-import { agregarProducto } from '../../redux/carrito/carritoActions'; // Importa la acción agregarProducto
+import { useDispatch } from 'react-redux';
+import { BtnAdd, CardPrice, ContainerPrice, ProductosCard } from './CardsProductosStyle';
+import { agregarProducto } from '../../redux/carrito/carritoActions'; 
+import { formatPrice } from '../../utils/index';
 
-const CardsProducto = ({ img, name, price }) => {
-  const dispatch = useDispatch(); // Obtiene la función dispatch de Redux
+const CardProducto = ({img, name, price, id}) => {
 
-  // Función para agregar un producto al carrito
-  const handleAgregarAlCarrito = () => {
-    // console.log("Se hizo click en Agregar");
-    const producto = { img, name, price };
-    dispatch(agregarProducto(producto)); // Dispatcha la acción agregarProducto con el producto
-  };
-
+  const dispatch = useDispatch();
   return (
     <ProductosCard>
-      <img src={img} alt={name} />
+      <img src={img} alt={name}/>
       <h2>{name}</h2>
-
       <ContainerPrice>
-        <CardPrice>${price}</CardPrice>
-        <Button onClick={handleAgregarAlCarrito}>
-          Agregar
-        </Button>
+        <CardPrice>{formatPrice(price)}</CardPrice>
+        <BtnAdd onClick={() => dispatch(agregarProducto({img, name, price, id}))}>Agregar</BtnAdd>
       </ContainerPrice>
     </ProductosCard>
   );
 };
 
-export default CardsProducto;
+export default CardProducto;
