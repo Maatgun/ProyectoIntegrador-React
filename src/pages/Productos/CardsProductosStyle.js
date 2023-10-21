@@ -15,6 +15,7 @@ export const ProductoWrapper = styled.section`
     margin: 40px;
   }
 
+
 `;
 
 export const ProductsContainer = styled.div`
@@ -26,7 +27,6 @@ export const ProductsContainer = styled.div`
     padding: 40px 0;;
     margin: 50px;
     max-width: 1200px;
-
 `;
 
 export const ProductosCard = styled.div`
@@ -56,8 +56,11 @@ p{
 }
 @media (max-width: 768px) {
     width:250px;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 `;
 
 export const ContainerPrice = styled.div`
@@ -67,7 +70,7 @@ justify-content: space-between;
 margin:25px;
 align-items:center;
 
-@media (max-width: 460px) {
+@media (max-width: 680px) {
     flex-direction: column;
     gap: 10px;
   }

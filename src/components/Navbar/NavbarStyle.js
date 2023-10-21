@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import styled from "styled-components";
+import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const NavbarContainerStyled = styled.header`
   height: 100px;
@@ -10,20 +11,45 @@ export const NavbarContainerStyled = styled.header`
 
 `;
 
-export const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+export const NavLinkStyled = styled(NavLink)`
+  color: #333333;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.2s ease-in-out;
 
-  & img {
-    width: 100px;
+  &:hover {
+    color: #007bff;
+  }
+
+  &.active {
+    color: #28a745;
   }
 `;
 
-export const LinkContainerInicioSesion = styled.a`
-  display: flex;
-  font-size: 2rem;
+export const UserNavStyled = styled.div`
+  gap: 15px;
+  cursor: pointer;
+  span {
+    color: black;
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+`;
 
+export const ModalOverlayStyled = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: calc(100vw - 450px);
+  height: 100vh;
+
+  ${({ isHidden }) =>
+    !isHidden &&
+    css`
+      backdrop-filter: blur(4px);
+    `}
 `;
 
 export const LinksContainerStyled = styled.div`
@@ -31,7 +57,7 @@ export const LinksContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 16px;
 
   a {
     padding: 1rem 1.5rem;
@@ -47,159 +73,138 @@ export const LinksContainerStyled = styled.div`
 `;
 
 export const LinkContainerStyled = styled.div`
-  font-size: 1.2rem;
-  display: flex;
-  align-item: center;
+  font-size: 1.8rem;
 `;
 
-export const NavLinkStyled = styled(NavLink)`
-  color: #333333;
-  font-size: 20px;
-  text-decoration: none;
-  font-weight: 500;
+export const UserContainerStyled = styled(LinkContainerStyled)`
+  display: flex;
+  align-items: center;
+`;
+
+export const CartNavStyled = styled.div`
+  position: relative;
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    top: 0;
+
+    height: 20px;
+    width: 20px;
+    text-align: center;
+
+    border-radius: 1rem;
+    border: 1px solid white;
+    color: white;
+    background-color: red;
+    font-size: 0.9rem;
+
+  }
+`;
+
+export const SpanStyled = styled.span`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  & img {
+    width: 100px;
+  }
+`;
+
+export const MenuStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const MenuContainer = styled.div`
+    display: none;
+
+    @media (max-width: 768px) {
+		display: flex;
+        font-size: 2rem;
+        color: ${(props) => (props.icon ? "#f7cac9" : "#ffdcdb")};  
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(0.9);
+            transition: all 0.7s; 
+        }
+    }
+
+    @media (max-width: 440px) {
+        margin-right: 10px;
+    }
+`;
+
+export const NavLinksWrapper = styled.ul`
+    display: flex;
+    gap: 25px;
+    padding: 0;
+    
+    @media (max-width: 768px) {
+
+        display: none;
+        transition: transform 2s ease-out;
+
+        &.open {
+            position: absolute;
+            z-index: 1;
+            top: 80px;
+            right: 25%;
+            left: 25%;
+            width: 50%;
+            flex-direction: column;
+            background-color: #7ca1d5;
+            align-items: center;
+            padding: 20px;
+            gap: 40px;
+            margin-top: 1rem;
+            display: flex;
+            transform: translateY(15px);
+
+            @media (max-width: 576px) {
+                width: 50%;
+                right: 25%;
+                left: 25%;
+            }
+
+            @media (max-width: 440px) {
+                width: 100%;
+                right: 0;
+                left: 0;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin: 1rem 0;
+                padding: 20px 0;
+            }
+        }
+
+        &.close {
+            transform: translateY(0);
+        }
+    }
+`;
+
+export const HiMenuButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px; // Ajusta el tamaño del icono según tus necesidades
+  color: #333; // Cambia el color a tu preferencia
+  margin-right: 15px; // Agrega espaciado a tu gusto
   transition: color 0.2s ease-in-out;
 
   &:hover {
-    color: #007bff;
+    color: #555; // Cambia el color al hacer hover si lo deseas
   }
-
-  &.active {
-    color: #28a745;
-  }
-`;
-
-export const ProductsContainerStyled = styled(LinkContainerStyled)`
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const MenuContainerStyled = styled(LinkContainerStyled)`
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: flex;
-    gap:10px;
-  }
-`;
-
-export const BtnNavbar = styled.div`
-  display: flex;
-  gap:10px;
- 
-`;
-
-export const ButtonCartLogo = styled.button`
-  display: flex;
-  font-size: 1.8rem;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-`;
-
-export const ButtonMenu = styled(ButtonCartLogo)`
-
-  @media (min-width: 941px) {
-    display: none;
-  }
-`;
-
-export const LinksContainer = styled.div`
-  display: flex;
-  gap: 40px;
-
-  @media (max-width: 940px) {
-    flex-direction: column;
-    background-color: #fff;
-    position: absolute;
-    font-size:20px;
-    top: 60px;
-    left: 5%;
-    rigth:5%;
-    margin: 35px;
-    padding: 0px;
-    width: 80%;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 0px 0px 10px 10px;
-    z-index: 2;
-    transition: transform 0.3s ease-in-out;
-    opacity: 0;
-    pointer-events: none;
-    &.open {
-      transform: scaleY(1);
-      opacity: 2;
-      pointer-events: auto;
-    }
-  }
-`;
-
-export const MenuButton = styled.button`
-  display: none;
-  font-size: 2.2rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: #333333;
-  margin-left: auto;
-  
-
-  @media (max-width: 941px) {
-    display: flex;
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
-export const Carrito = styled.div`
-  display: none;
-
-  &.openCart {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 30px;
-  
-    width: 450px;
-    height: calc(100vh - 4rem);
-  
-    padding: 2rem;
-    background-color: #f8f8f8;
-    border-radius: 0 0 0 1rem;
-    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.3);
-    
-    @media (max-width: 500px) {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      width: 250px; 
-  }
-  }
-
- 
-`;
-
-export const ContenedorCarrito = styled.div`
-gap: 30px;
-margin: 35px;
-width: 350px;
-
-background: var(--gray-bg);
-box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
-padding: 1rem;
-border-radius: 15px;
-
-@media (max-width: 500px) {
-  width: 200px;
-  display:flex;
-  flex-direction: center;
-  margin: 0px 15px;
-}
 `;

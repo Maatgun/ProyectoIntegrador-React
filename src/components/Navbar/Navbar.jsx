@@ -1,173 +1,138 @@
-import React, { useState, useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { HiMenu } from 'react-icons/hi';
+import ModalUser from './ModalUser/ModalUser';
+import CartIcon from './CartIcon/CartIcon';
+import { toggleHiddenMenu } from '../../redux/user/userSlice';
+import ModalCart from './ModalCart/ModalCart';
+import { useMenu } from './context/MenuContext';
+
 import {
   NavbarContainerStyled,
-  BtnNavbar,
   LinksContainerStyled,
-  ButtonCartLogo,
+  UserNavStyled,
+  SpanStyled,
+  CartNavStyled,
+  UserContainerStyled,
   Logo,
-  LinkContainerInicioSesion,
-  Carrito,
-  ContenedorCarrito,
-  MenuButton,
-  LinksContainer,
-  NavLinkStyled,
-} from "./NavbarStyle";
-import { ButtonCart, BelowCarrito } from "./CarritoStyle";
-import { RxAvatar } from "react-icons/rx";
-import { BsFillBagHeartFill } from "react-icons/bs";
-import { HiMenu } from "react-icons/hi";
-import { GiDogBowl } from "react-icons/gi";
-import { GiDogHouse } from "react-icons/gi";
-import { SiDatadog } from "react-icons/si";
-import { PiDogFill } from "react-icons/pi";
-import { Context } from "./MenuContext";
-import { selectItemsCarrito } from "../../redux/carrito/carritoSelectors";
-import { BsCart4 } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { borrarCarrito } from "../../redux/carrito/carritoActions";
-import CarritoContainer from "./CarritoContenedor";
-import { ModalCarrito } from "./modal/ModalReact";
+  MenuStyled,
+  HiMenuButton,
+} from './NavbarStyle';
 
-const ButtonMenu = ({ onClick }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleMenuClick = () => {
-    setMenuOpen(!menuOpen);
-    onClick();
-  };
 
-  return (
-    <MenuButton onClick={handleMenuClick}>
-      <HiMenu />
-      {menuOpen && (
-        <LinksContainer className={menuOpen ? "open" : ""}>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/Productos">Productos</NavLink>
-          <NavLink to="/Contacto">Contacto</NavLink>
-          <NavLink to="/AboutUs">About Us</NavLink>
-        </LinksContainer>
-      )}
-    </MenuButton>
-  );
-};
+import { RxAvatar } from 'react-icons/rx';
+import { GiDogBowl } from 'react-icons/gi';
+import { GiDogHouse } from 'react-icons/gi';
+import { SiDatadog } from 'react-icons/si';
+import { PiDogFill } from 'react-icons/pi';
 
-const Navbar = () => {
-  const { state, dispatch } = useContext(Context);
-  const itemsCarrito = selectItemsCarrito();
-  const dispatchRedux = useDispatch();
-
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [carritoComprado, setCarritoComprado] = useState(false);
+function Navbar() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+  const { isMenuOpen, toggleMenu } = useMenu();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const comprarCarrito = () => {
-    setCarritoComprado(true);
-    openModal();
-  };
-
-  const borrarTodoCarrito = () => {
-    setCarritoComprado(false);
-    openModal();
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const totalDeCompra = itemsCarrito.reduce((acc, producto) => {
-    return (acc += producto.precio * producto.cantidad);
-  }, 0);
-
   useEffect(() => {
-    const handleResize = () => {
+    window.addEventListener('resize', () => {
       setWindowWidth(window.innerWidth);
-    };
+    });
 
-    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', () => {
+        setWindowWidth(window.innerWidth);
+      });
     };
   }, []);
 
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  };
+
   return (
-    <>
-      <NavbarContainerStyled>
+    <NavbarContainerStyled>
+      <ModalCart />
+      <ModalUser />
+
+      <Link to="/" onClick={closeMenu}>
         <Logo>
           <img
             src="https://res.cloudinary.com/dvj7ctojo/image/upload/v1690864147/logo-dogChow_ixeecn.png"
             alt="Logo"
           />
         </Logo>
-        {windowWidth <= 941 ? (
-          <ButtonMenu onClick={() => dispatch({ type: "toggle_menu" })} />
-        ) : (
-          <LinksContainer>
-            <NavLinkStyled to="/">
-            <GiDogHouse/> Home
-            </NavLinkStyled>
+      </Link>
 
-            <NavLinkStyled to="/Productos">
-              <GiDogBowl/> Productos
-            </NavLinkStyled>
-
-            <NavLinkStyled to="/Contacto">
-             <PiDogFill/> Contacto
-              </NavLinkStyled>
-
-            <NavLinkStyled to="/AboutUs">
-            <SiDatadog/> About Us
-            
-            </NavLinkStyled>
-
-          </LinksContainer>
+      <MenuStyled>
+        {windowWidth <= 951 && (
+          <HiMenuButton onClick={toggleMenu}>
+            <HiMenu />
+          </HiMenuButton>
         )}
 
-        <BtnNavbar>
-          <LinkContainerInicioSesion href="/Login">
-            <RxAvatar/>
-          </LinkContainerInicioSesion>
-          <ButtonCartLogo onClick={() => dispatch({ type: "toggle_cart" })}>
-            <BsFillBagHeartFill />
-          </ButtonCartLogo>
+        <LinksContainerStyled className={isMenuOpen ? 'open' : ''}>
 
-          <Carrito className={state.isCartOpen ? "openCart" : ""}>
-            <p>
-              <BsCart4 />
-              Mi carrito
-            </p>
-            {itemsCarrito.length === 0 && <p>No hay productos en su carrito</p>}
-            <ContenedorCarrito>
-              {itemsCarrito.map((producto) => (
-                <CarritoContainer {...producto} key={producto.id} />
-              ))}
-            </ContenedorCarrito>
+          <motion.div whileTap={{ scale: 0.97 }}>
+            <Link to="/" onClick={closeMenu}>
+              <LinksContainerStyled>
+                <GiDogHouse />
+              </LinksContainerStyled>
+              Home
+            </Link>
+          </motion.div>
 
-            {itemsCarrito.length !== 0 && (
-              <BelowCarrito>
-                <p style={{margin: "0 4rem" }}>
-                  Total $<span>{totalDeCompra.toFixed(2)}</span>
-                </p>
-                <ButtonCart onClick={comprarCarrito}>Comprar</ButtonCart>
-                <ButtonCart onClick={borrarTodoCarrito}>Vaciar</ButtonCart>
-              </BelowCarrito>
-            )}
-          </Carrito>
-        </BtnNavbar>
-      </NavbarContainerStyled>
+          <motion.div whileTap={{ scale: 0.97 }}>
+            <Link to="/Productos" onClick={closeMenu}>
+              <LinksContainerStyled>
+                <GiDogBowl />
+              </LinksContainerStyled>
+              Productos
+            </Link>
+          </motion.div>
 
-      <ModalCarrito
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-        aceptarClick={carritoComprado ? () => { dispatchRedux(borrarCarrito()) } : () => { dispatchRedux(borrarCarrito()) }}
-        mensaje={carritoComprado ? "¿Desea realizar la compra?" : "¿Desea vaciar el carrito?"}
-      />
-    </>
+          <motion.div whileTap={{ scale: 0.97 }}>
+            <Link to="/Contacto" onClick={closeMenu}>
+              <LinksContainerStyled>
+                <PiDogFill />
+              </LinksContainerStyled>
+              Contacto
+            </Link>
+          </motion.div>
+
+          <motion.div whileTap={{ scale: 0.97 }}>
+            <Link to="/AboutUs" onClick={closeMenu}>
+              <LinksContainerStyled>
+                <SiDatadog />
+              </LinksContainerStyled>
+              About Us
+            </Link>
+          </motion.div>
+        </LinksContainerStyled>
+      </MenuStyled>
+
+      <UserNavStyled>
+        <UserContainerStyled
+          onClick={() => {
+            currentUser ? dispatch(toggleHiddenMenu()) : navigate('/register');
+          }}
+        >
+          <SpanStyled>
+            {currentUser ? currentUser.nombre : ''}
+          </SpanStyled>
+          <RxAvatar />
+        </UserContainerStyled>
+      </UserNavStyled>
+
+      <CartNavStyled>
+        <CartIcon />
+      </CartNavStyled>
+    </NavbarContainerStyled>
   );
-};
+}
 
 export default Navbar;

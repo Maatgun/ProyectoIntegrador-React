@@ -3,7 +3,6 @@ import { HeroContainerStyled, HeroImgContainerStyle, HeroTextContainerStyled } f
 import Button from '../../components/UI/Button/Button'
 import { Link } from 'react-router-dom';
 import AlimentosDestacados from '../../components/Carousel/Carousel';
-import Footer from '../../components/Footer/Footer';
 import Banner from '../Banner/Banner';
 import AnimatedButton from '../UI/AnimatedButton/AnimatedButton';
 
@@ -29,9 +28,8 @@ const Home = () => {
         </HeroImgContainerStyle>
           </HeroContainerStyled>
           <AlimentosDestacados />
-          <AnimatedButton />
+            <AnimatedButton />
           <Banner />
-          <Footer />
     </>
 
     )

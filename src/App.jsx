@@ -1,20 +1,19 @@
-import "./App.css";
-import React from 'react';
-import Routes from './routes/Routes';
-import { GlobalStyle } from './style/GlobalStyle';
-import { MenuDespegable } from './components/Navbar/MenuContext';
+import Footer from "./components/Footer/Footer";
+import Layout from "./components/Layout/Layout";
+import { MenuProvider } from "./components/Navbar/context/MenuContext";
+import Routes from "./routes/Routes";
+import "./App.css"
 
 function App() {
+
   return (
-      
-      
-      <MenuDespegable>
-        <Routes />
-        <GlobalStyle />
-      </MenuDespegable>
-     
-  );
+    <MenuProvider>
+      <Layout>
+        <Routes/>
+        <Footer/>
+      </Layout>
+    </MenuProvider>
+  )
 }
 
-export default App;
-
+export default App

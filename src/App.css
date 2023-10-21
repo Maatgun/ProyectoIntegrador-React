@@ -1,29 +1,28 @@
 .open {
+    display: none;
+
+    transform: translateX(0);
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    align-items: center; 
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 50%;
-    background-color: #333; 
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
     z-index: 1000;
-    padding: 20px;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%);
   }
   
   
   .open a {
     color: #333; 
     text-decoration: none;
-    font-size: 20px; 
+    font-size: 20px;
     font-weight: 600;
     transition: color 0.2s ease-in-out;
   }
-  
   
   .open a:hover {
     color: #28a745; 
@@ -59,4 +58,25 @@
     margin: 30px;
   }
 
+  .closeMenu {
+    font-size: 24px;
+    color: #333; /* Cambia el color a tu preferencia */
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    background-color: #fff; /* Cambia el color de fondo a tu preferencia */
+    transition: background-color 0.3s, color 0.3s;
   
+    /* Añade estilos adicionales si lo necesitas */
+  }
+  
+  .closeMenu:hover {
+    background-color: #333; /* Cambia el color de fondo al pasar el mouse */
+    color: #fff; /* Cambia el color al pasar el mouse */
+  }
+  
+  /* styles.css (o el nombre de tu archivo de estilos) */
+.hide-large-menu {
+  display: none;
+}
