@@ -1,5 +1,5 @@
 .open {
-  
+
     flex-direction: column;
     justify-content: center; 
     position: absolute;
@@ -66,3 +66,7 @@
     transition: background-color 0.3s, color 0.3s;
 
   }
+
+  
+
+  

@@ -9,6 +9,10 @@ export const NavbarContainerStyled = styled.header`
   align-items: center;
   padding: 1rem 4rem;
 
+  @media (max-width: 768px) {
+    padding: 1rem 2rem;
+  }
+
 `;
 
 export const NavLinkStyled = styled(NavLink)`
@@ -148,3 +152,4 @@ export const HiMenuButton = styled.div`
   margin-right: 10px;
   transition: color 0.2s ease-in-out;
 `;
+

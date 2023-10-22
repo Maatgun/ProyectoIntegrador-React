@@ -12,11 +12,16 @@ export const IncreaseStyled = styled(motion.button)`
   border-radius: 15px;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: black;
   cursor: pointer;
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 25px;
+    height: 25px;
   }
 `;

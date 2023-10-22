@@ -67,8 +67,16 @@ export const PriceTotalStyled = styled.span`
   color: black;
   font-weight: 800;
   font-size: 1.3rem;
+
+  @media (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 
 export const HrStyled = styled.hr`
   margin: 1rem 0;
+
+  @media (max-width: 500px) {
+    margin: 0.5rem 0;
+  }
 `;

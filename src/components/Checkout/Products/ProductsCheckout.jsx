@@ -26,7 +26,7 @@ const ProductsCheckout = ({cartItems, shippingCost, price}) => {
               return <CardProductCheckout key={item.id} {...item} />
             })
           ) : (
-            <p>Dale amiguero, comprá algo</p>
+            <p>Agrega Productos!!</p>
           )
         }
       </CardsWrapperStyled>

@@ -24,10 +24,6 @@ const CardProductCheckout = ({img, name, price, quantity, id}) => {
 
   return (
     <CardContainerStyled>
-      <img
-        src={img}
-        alt={name}
-      />
       <CardInfoStyled>
         <ProductTitleStyled>{name}</ProductTitleStyled>
         <PriceStyled>{formatPrice(price)}</PriceStyled>

@@ -7,21 +7,21 @@ import {
   ProductStyled,
 } from "./CardResumenStyles";
 
-const CardResumen = ({title, desc, quantity, img, price}) => {
+const CardResumen = ({name, quantity, img, price}) => {
   return (
     <ProductStyled>
       <ProductLeftStyled>
         <img
           src={img}
-          alt={title}
+          alt={name}
         />
         <div>
-          <h3>{title}</h3>
+          <h3>{name}</h3>
           <p>{desc}</p>
         </div>
       </ProductLeftStyled>
       <PriceContainerStyled>
-        <p>3U</p>
+        <p></p>
         <ProductPriceStyled>{formatPrice(price * quantity)}</ProductPriceStyled>
       </PriceContainerStyled>
     </ProductStyled>

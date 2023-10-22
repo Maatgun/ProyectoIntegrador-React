@@ -19,6 +19,13 @@ export const CardContainerStyled = styled.div`
     border-radius: 16px;
     object-fit: cover;
   }
+
+@media screen and (max-width: 768px) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
 `;
 
 export const CardInfoStyled = styled.div`
@@ -27,12 +34,24 @@ export const CardInfoStyled = styled.div`
   gap: 5px;
 
   width: 240px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const ProductTitleStyled = styled.h3`
   margin: 0;
   margin-bottom: 2px;
   font-weight: 500;
+
+@media screen and (max-width: 768px) {
+  font-size: 12px;
+  text-align: center;
+
+}
 `;
 
 export const TextStyled = styled.h3`

@@ -14,6 +14,7 @@ border-radius: 15px;
 border: solid 1px #152039;
 margin: 0 1rem 0 1.5rem;
 
+
 `
 
 export const CardImg = styled.img`
