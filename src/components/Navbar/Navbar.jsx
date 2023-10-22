@@ -21,8 +21,6 @@ import {
   HiMenuButton,
 } from './NavbarStyle';
 
-
-
 import { RxAvatar } from 'react-icons/rx';
 import { GiDogBowl } from 'react-icons/gi';
 import { GiDogHouse } from 'react-icons/gi';
@@ -37,14 +35,14 @@ function Navbar() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
+    const handleResize = () => {
       setWindowWidth(window.innerWidth);
-    });
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', () => {
-        setWindowWidth(window.innerWidth);
-      });
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -59,7 +57,7 @@ function Navbar() {
       <ModalCart />
       <ModalUser />
 
-      <Link to="/" onClick={closeMenu}>
+      <Link to="/">
         <Logo>
           <img
             src="https://res.cloudinary.com/dvj7ctojo/image/upload/v1690864147/logo-dogChow_ixeecn.png"
@@ -68,52 +66,51 @@ function Navbar() {
         </Logo>
       </Link>
 
-      <MenuStyled>
-        {windowWidth <= 951 && (
-          <HiMenuButton onClick={toggleMenu}>
-            <HiMenu />
-          </HiMenuButton>
-        )}
+      {windowWidth <= 951 ? (
+        <HiMenuButton onClick={toggleMenu}>
+          <HiMenu />
+        </HiMenuButton>
+      ) : (
+        <MenuStyled>
+          <LinksContainerStyled className={isMenuOpen ? 'open' : ''}>
+            <motion.div whileTap={{ scale: 0.97 }}>
+              <Link to="/" onClick={closeMenu}>
+                <LinksContainerStyled>
+                  <GiDogHouse />
+                </LinksContainerStyled>
+                Home
+              </Link>
+            </motion.div>
 
-        <LinksContainerStyled className={isMenuOpen ? 'open' : ''}>
+            <motion.div whileTap={{ scale: 0.97 }}>
+              <Link to="/Productos" onClick={closeMenu}>
+                <LinksContainerStyled>
+                  <GiDogBowl />
+                </LinksContainerStyled>
+                Productos
+              </Link>
+            </motion.div>
 
-          <motion.div whileTap={{ scale: 0.97 }}>
-            <Link to="/" onClick={closeMenu}>
-              <LinksContainerStyled>
-                <GiDogHouse />
-              </LinksContainerStyled>
-              Home
-            </Link>
-          </motion.div>
+            <motion.div whileTap={{ scale: 0.97 }}>
+              <Link to="/Contacto" onClick={closeMenu}>
+                <LinksContainerStyled>
+                  <PiDogFill />
+                </LinksContainerStyled>
+                Contacto
+              </Link>
+            </motion.div>
 
-          <motion.div whileTap={{ scale: 0.97 }}>
-            <Link to="/Productos" onClick={closeMenu}>
-              <LinksContainerStyled>
-                <GiDogBowl />
-              </LinksContainerStyled>
-              Productos
-            </Link>
-          </motion.div>
-
-          <motion.div whileTap={{ scale: 0.97 }}>
-            <Link to="/Contacto" onClick={closeMenu}>
-              <LinksContainerStyled>
-                <PiDogFill />
-              </LinksContainerStyled>
-              Contacto
-            </Link>
-          </motion.div>
-
-          <motion.div whileTap={{ scale: 0.97 }}>
-            <Link to="/AboutUs" onClick={closeMenu}>
-              <LinksContainerStyled>
-                <SiDatadog />
-              </LinksContainerStyled>
-              About Us
-            </Link>
-          </motion.div>
-        </LinksContainerStyled>
-      </MenuStyled>
+            <motion.div whileTap={{ scale: 0.97 }}>
+              <Link to="/AboutUs" onClick={closeMenu}>
+                <LinksContainerStyled>
+                  <SiDatadog />
+                </LinksContainerStyled>
+                About Us
+              </Link>
+            </motion.div>
+          </LinksContainerStyled>
+        </MenuStyled>
+      )}
 
       <UserNavStyled>
         <UserContainerStyled

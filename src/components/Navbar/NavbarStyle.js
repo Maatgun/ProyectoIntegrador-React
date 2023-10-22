@@ -70,6 +70,7 @@ export const LinksContainerStyled = styled.div`
     align-items: center;
     gap: 5px;
   }
+
 `;
 
 export const LinkContainerStyled = styled.div`
@@ -122,15 +123,13 @@ export const MenuStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    
 `;
 
 export const MenuContainer = styled.div`
-    display: none;
-
     @media (max-width: 768px) {
 		display: flex;
-        font-size: 2rem;
-        color: ${(props) => (props.icon ? "#f7cac9" : "#ffdcdb")};  
+        font-size: 2rem; 
         cursor: pointer;
 
         &:hover {
@@ -138,73 +137,14 @@ export const MenuContainer = styled.div`
             transition: all 0.7s; 
         }
     }
-
-    @media (max-width: 440px) {
-        margin-right: 10px;
-    }
-`;
-
-export const NavLinksWrapper = styled.ul`
-    display: flex;
-    gap: 25px;
-    padding: 0;
-    
-    @media (max-width: 768px) {
-
-        display: none;
-        transition: transform 2s ease-out;
-
-        &.open {
-            position: absolute;
-            z-index: 1;
-            top: 80px;
-            right: 25%;
-            left: 25%;
-            width: 50%;
-            flex-direction: column;
-            background-color: #7ca1d5;
-            align-items: center;
-            padding: 20px;
-            gap: 40px;
-            margin-top: 1rem;
-            display: flex;
-            transform: translateY(15px);
-
-            @media (max-width: 576px) {
-                width: 50%;
-                right: 25%;
-                left: 25%;
-            }
-
-            @media (max-width: 440px) {
-                width: 100%;
-                right: 0;
-                left: 0;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                margin: 1rem 0;
-                padding: 20px 0;
-            }
-        }
-
-        &.close {
-            transform: translateY(0);
-        }
-    }
 `;
 
 export const HiMenuButton = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 24px; // Ajusta el tamaño del icono según tus necesidades
-  color: #333; // Cambia el color a tu preferencia
-  margin-right: 15px; // Agrega espaciado a tu gusto
+  font-size: 24px; 
+  color: #333; 
+  margin-right: 10px;
   transition: color 0.2s ease-in-out;
-
-  &:hover {
-    color: #555; // Cambia el color al hacer hover si lo deseas
-  }
 `;
