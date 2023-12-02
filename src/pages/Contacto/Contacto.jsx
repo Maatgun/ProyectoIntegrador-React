@@ -1,41 +1,107 @@
 import React, { useState } from 'react';
-import { ContactoStyled } from './ContactoStyle';
-import Button from '../../components/UI/Button/Button';
 
-const Contacto = () => {
-    const [nombre, setNombre] = useState("");
-    const [apellido, setApellido] = useState("");
-    const [email, setEmail] = useState("");
-    const [mensaje, setMensaje] = useState("");
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Formulario Enviado")
-    };
+  const [errors, setErrors] = useState({});
+const [messageSent, setMessageSent] = useState(false);
 
-    return(
-        <ContactoStyled>
-        <h2>C O N T A C T O</h2>
-        <form className='form-container' onSubmit={handleSubmit}>
-            <label htmlFor="nombre">Nombre:</label>
-            <input type="text" id= "nombre" name= "nombre" value={nombre}
-                onChange={(e) => setNombre(e.target.value)} />
-            <label htmlFor="Apellido">Apellido:</label>
-            <input type="text" id= "apellido" name= "apellido" value={apellido}
-                onChange={(e) => setApellido(e.target.value)} />
-             <label htmlFor="Email">Email:</label>
-            <input type="text" id= "Email" name= "Email" value={email}
-                onChange={(e) => setEmail(e.target.value)} />
-            <label htmlFor="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" value={mensaje}
-                    onChange={(e) => setMensaje(e.target.value)} />
+  const validateForm = () => {
+    let newErrors = {};
 
-                <Button radius= '15'>Enviar</Button>
-            
-        </form>
-        </ContactoStyled>
+    if (!formData.email.trim()) {
+        newErrors.email = 'El correo electrónico es obligatorio';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = 'El correo electrónico es inválido';
+    }
 
-    )
-}
 
-export default Contacto
+    if (!formData.name.trim()) {
+      newErrors.name = 'El nombre es obligatorio';
+    } else if (formData.name.length < 3) {
+        newErrors.name = 'El nombre debe tener al menos 3 caracteres';
+        }
+
+    if (!formData.message.trim()) {
+        newErrors.message = 'El mensaje es obligatorio';
+        } else if (formData.message.length < 10) {
+            newErrors.message = 'El mensaje debe tener al menos 10 caracteres';
+            }
+
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }; 
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      console.log('Formulario enviado:', formData);
+        e.target.reset();
+        setFormData({ name: '', email: '', message: '' });
+        setMessageSent(true);
+    } else {
+      console.log('Formulario inválido. Corrige los errores antes de enviar.');
+    }
+  };
+
+
+  return (
+      
+    <>
+    <h1>Contacto</h1>
+  
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="name">Nombre:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        {errors.name && <span>{errors.name}</span>}
+      </div>
+
+      <div>
+        <label htmlFor="email">Correo Electrónico:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        {errors.email && <span>{errors.email}</span>}
+      </div>
+
+      <div>
+        <label htmlFor="message">Mensaje:</label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+        />
+        {errors.message && <span>{errors.message}</span>}
+      </div>
+
+      <button type="submit">Enviar</button>
+      {messageSent && <p>Gracias por tu mensaje. Nos pondremos en contacto contigo lo antes posible.</p>}
+    </form>
+    
+    </>
+  );
+};
+
+export default ContactForm;
