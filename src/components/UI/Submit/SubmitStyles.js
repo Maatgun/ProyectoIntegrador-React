@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 export const ButtonSubmitStyled = styled(motion.button)`
 padding: 0.8rem 1.5rem;
+margin: 25px 0;
 outline:none;
 border:none;
 border-radius: 15px;

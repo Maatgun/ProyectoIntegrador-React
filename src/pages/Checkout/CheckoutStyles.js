@@ -4,13 +4,12 @@ export const ContainerCheckoutStyled = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 2rem 5rem;
+  
 
-  @media (max-width: 760px) {
+  @media (max-width: 950px) {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
-    padding: 0;
-    gap: 2rem;
   }
+   
 `;

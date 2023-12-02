@@ -8,6 +8,7 @@ import AnimatedButton from '../UI/AnimatedButton/AnimatedButton';
 
 
 
+
 const Home = () => {
     return (
         <>

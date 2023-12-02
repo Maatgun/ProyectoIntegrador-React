@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 import carritoReducer from "./carrito/cartSlice"
 import userReducer from "./user/userSlice"
 
-import ordersReducer from "./orders/ordersSlice"
+import ordersReducer from "./order/ordersSlice"
 
 const reducers = combineReducers({
   cart: carritoReducer,

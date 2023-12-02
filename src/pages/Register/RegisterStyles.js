@@ -9,6 +9,7 @@ export const LoginContainerStyled = styled.div`
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  }
 `;
 
 export const Form = styled(FormikForm)`
@@ -18,6 +19,15 @@ export const Form = styled(FormikForm)`
   justify-content: center;
   padding: 0 2rem;
   gap: 20px;
+
+  @media (max-width: 450px) {
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--gray-bg);
+    border-radius: 10px;
+    outline: none;
+  }
 `;
 
 export const LoginEmailStyled = styled(Link)`

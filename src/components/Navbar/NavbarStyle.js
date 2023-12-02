@@ -9,27 +9,11 @@ export const NavbarContainerStyled = styled.header`
   align-items: center;
   padding: 1rem 4rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     padding: 1rem 2rem;
   }
-
 `;
 
-export const NavLinkStyled = styled(NavLink)`
-  color: #333333;
-  font-size: 16px;
-  text-decoration: none;
-  font-weight: 800;
-  transition: color 0.2s ease-in-out;
-
-  &:hover {
-    color: #007bff;
-  }
-
-  &.active {
-    color: #28a745;
-  }
-`;
 
 export const UserNavStyled = styled.div`
   gap: 15px;
@@ -62,9 +46,10 @@ export const LinksContainerStyled = styled.div`
   justify-content: center;
   align-items: center;
   gap: 16px;
+  font-size: 1.2rem;
 
   a {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
   }
 
   a:first-child {
@@ -73,6 +58,17 @@ export const LinksContainerStyled = styled.div`
     justify-content: center;
     align-items: center;
     gap: 5px;
+    font-weight: bold;
+   
+    &:hover {
+      color:#28a745;
+    }
+  }
+
+  @media (max-width: 960px) {
+    display:flex;
+    flex-direction: column;
+    font-size: 1.2rem;    
   }
 
 `;
@@ -128,28 +124,26 @@ export const MenuStyled = styled.div`
     justify-content: center;
     align-items: center;
     
-`;
 
-export const MenuContainer = styled.div`
-    @media (max-width: 768px) {
-		display: flex;
-        font-size: 2rem; 
-        cursor: pointer;
-
-        &:hover {
-            transform: scale(0.9);
-            transition: all 0.7s; 
-        }
-    }
+  @media (max-width: 960px) {
+      width: 100%;
+      height: 90vh;    
+      position: absolute;
+      top: 100px;
+      left:${({ click }) => (click ? 0 : '-100%')};
+      flex-direction: column;
+      transition: 0.5s all ease-in;
+      background: #fff;
+  }
+      
 `;
 
 export const HiMenuButton = styled.div`
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 24px; 
-  color: #333; 
-  margin-right: 10px;
-  transition: color 0.2s ease-in-out;
+  display: none;
+
+  @media (max-width: 960px) {
+    display:flex;
+    font-size: 1.5rem;
+  }
 `;
 

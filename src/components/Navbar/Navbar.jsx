@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { HiMenu } from 'react-icons/hi';
-import ModalUser from './ModalUser/ModalUser';
-import CartIcon from './CartIcon/CartIcon';
-import { toggleHiddenMenu } from '../../redux/user/userSlice';
-import ModalCart from './ModalCart/ModalCart';
-import { useMenu } from './context/MenuContext';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { HiMenu } from "react-icons/hi";
+import ModalUser from "./ModalUser/ModalUser";
+import CartIcon from "./CartIcon/CartIcon";
+import { toggleHiddenMenu } from "../../redux/user/userSlice";
+import ModalCart from "./ModalCart/ModalCart";
 
 import {
   NavbarContainerStyled,
@@ -19,38 +18,24 @@ import {
   Logo,
   MenuStyled,
   HiMenuButton,
-} from './NavbarStyle';
+} from "./NavbarStyle";
 
-import { RxAvatar } from 'react-icons/rx';
-import { GiDogBowl } from 'react-icons/gi';
-import { GiDogHouse } from 'react-icons/gi';
-import { SiDatadog } from 'react-icons/si';
-import { PiDogFill } from 'react-icons/pi';
+import { RxAvatar } from "react-icons/rx";
+import { GiDogBowl } from "react-icons/gi";
+import { GiDogHouse } from "react-icons/gi";
+import { SiDatadog } from "react-icons/si";
+import { PiDogFill } from "react-icons/pi";
+import {FaTimes} from "react-icons/fa";
+
+
 
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  const { isMenuOpen, toggleMenu } = useMenu();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [click, setClick] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const closeMenu = () => {
-    if (isMenuOpen) {
-      toggleMenu();
-    }
-  };
+  const changeClick = () => setClick(!click);
 
   return (
     <NavbarContainerStyled>
@@ -66,61 +51,46 @@ function Navbar() {
         </Logo>
       </Link>
 
-      {windowWidth <= 951 ? (
-        <HiMenuButton onClick={toggleMenu}>
-          <HiMenu />
-        </HiMenuButton>
-      ) : (
-        <MenuStyled>
-          <LinksContainerStyled className={isMenuOpen ? 'open' : ''}>
-            <motion.div whileTap={{ scale: 0.97 }}>
-              <Link to="/" onClick={closeMenu}>
-                <LinksContainerStyled>
-                  <GiDogHouse />
-                </LinksContainerStyled>
-                Home
-              </Link>
-            </motion.div>
 
-            <motion.div whileTap={{ scale: 0.97 }}>
-              <Link to="/Productos" onClick={closeMenu}>
-                <LinksContainerStyled>
-                  <GiDogBowl />
-                </LinksContainerStyled>
-                Productos
-              </Link>
+      <HiMenuButton onClick={() => changeClick()}>
+        {click ? <FaTimes /> : <HiMenu />}
+      </HiMenuButton>
+      <MenuStyled click={click}>
+        <LinksContainerStyled>
+          <Link to="/" onClick={() => changeClick()}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <GiDogHouse />
+              <span>Home</span>
             </motion.div>
-
-            <motion.div whileTap={{ scale: 0.97 }}>
-              <Link to="/Contacto" onClick={closeMenu}>
-                <LinksContainerStyled>
-                  <PiDogFill />
-                </LinksContainerStyled>
-                Contacto
-              </Link>
+          </Link>
+          <Link to="/productos" onClick={() => changeClick()}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <PiDogFill />
+              <span>Productos</span>
             </motion.div>
-
-            <motion.div whileTap={{ scale: 0.97 }}>
-              <Link to="/AboutUs" onClick={closeMenu}>
-                <LinksContainerStyled>
-                  <SiDatadog />
-                </LinksContainerStyled>
-                About Us
-              </Link>
+          </Link>
+          <Link to="/contacto" onClick={() => changeClick()}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <GiDogBowl />
+              <span>Contacto</span>
             </motion.div>
-          </LinksContainerStyled>
-        </MenuStyled>
-      )}
+          </Link>
+          <Link to="/aboutus" onClick={() => changeClick()}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+              <SiDatadog />
+              <span>About Us</span>
+            </motion.div>
+          </Link>
+        </LinksContainerStyled>
+      </MenuStyled>
 
       <UserNavStyled>
         <UserContainerStyled
           onClick={() => {
-            currentUser ? dispatch(toggleHiddenMenu()) : navigate('/register');
+            currentUser ? dispatch(toggleHiddenMenu()) : navigate("/register");
           }}
         >
-          <SpanStyled>
-            {currentUser ? currentUser.nombre : ''}
-          </SpanStyled>
+          <SpanStyled>{currentUser ? currentUser.nombre : ""}</SpanStyled>
           <RxAvatar />
         </UserContainerStyled>
       </UserNavStyled>

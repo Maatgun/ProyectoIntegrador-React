@@ -7,15 +7,22 @@ export const InputBoxStyled = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 50%;
+
 `;
 
 export const InputLabelStyled = styled.label`
   display: flex;
-  margin: 1rem 0;
+  margin:;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 50%;
+
+  @media (max-width: 950px) {
+    width: 100%;
+    align-items: center;
+    margin: 5px;
+  }
 `;
 
 export const InputStyled = styled.input`
@@ -38,6 +45,12 @@ export const InputStyled = styled.input`
   :-webkit-autofill:hover,
   :-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px var(--gray-bg) inset;
+  }
+
+  @media (max-width: 950px) {
+    width: 100%;
+    align-self: center;
+    text-align: center;
   }
 `;
 

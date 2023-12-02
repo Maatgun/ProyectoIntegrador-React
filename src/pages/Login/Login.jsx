@@ -18,6 +18,7 @@ const Login = () => {
 
   return (
     <LoginContainerStyled>
+      <h1>Inicia sesión</h1>
       <Formik
         initialValues={loginInitialValues}
         validationSchema={loginValidationSchema}

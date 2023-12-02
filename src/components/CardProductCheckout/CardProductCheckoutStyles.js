@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+ import styled from 'styled-components';
 
 export const CardContainerStyled = styled.div`
   display: flex;
@@ -9,9 +9,9 @@ export const CardContainerStyled = styled.div`
   width:85%;
 
   background: white;
-  box-shadow: 0 0px 15px 5px rgba(0, 0, 0, 0.3);
   padding: 1rem;
   border-radius: 15px;
+  border: 1px solid #e6e6e6;
 
   & img {
     width: 80px;
@@ -20,7 +20,7 @@ export const CardContainerStyled = styled.div`
     object-fit: cover;
   }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -35,7 +35,7 @@ export const CardInfoStyled = styled.div`
 
   width: 240px;
 
-  @media screen and (max-width: 768px) {
+  @media (max-width: 950px) {
     width: 100%;
     align-items: center;
     text-align: center;
@@ -47,7 +47,7 @@ export const ProductTitleStyled = styled.h3`
   margin-bottom: 2px;
   font-weight: 500;
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   font-size: 12px;
   text-align: center;
 

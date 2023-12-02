@@ -7,6 +7,13 @@ export const ProductosContainerStyled = styled.div`
 export const ProductsTitleStyled = styled.h2`
   font-weight: 500;
   font-size: 22px;
+
+  @media (max-width: 950px) {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
 `;
 
 export const CardsWrapperStyled = styled.div`
@@ -16,8 +23,6 @@ export const CardsWrapperStyled = styled.div`
   gap: 25px;
 
   width: 80%;
-  height: 440px;
-  margin: 0 auto;
 
   overflow: scroll;
 
@@ -35,22 +40,25 @@ export const CardsWrapperStyled = styled.div`
     display: none;
   }
 
-  @media (max-height: 800px) {
-    height: 270px;
-  }
-
-  @media (max-width: 1500px) {
+  @media (max-width: 950px) {
     width: 100%;
+  
   }
 `;
 
 export const PriceContainerStyled = styled.div`
-  margin: 0 auto;
-  margin-top: 2rem;
+  
+  margin-top: 1rem;
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 950px) {
+    width: 100%;
+    align-items: center;
+  }
+    
 `;
 
 export const SubtotalStyled = styled.div`

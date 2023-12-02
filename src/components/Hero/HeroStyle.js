@@ -4,7 +4,6 @@ export const HeroContainerStyled = styled.section`
 display:flex;
 justify-content: space-round;
 align-items:center;
-max-width: 1300px;
 margin: 0 auto;
 gap:30px;
 

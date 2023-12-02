@@ -17,7 +17,6 @@ import {
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../../redux/carrito/cartSlice";
 import { IoMdTrash } from "react-icons/io";
-import { addItemToCart } from "../../../redux/carrito/cart-utils";
 
 const ModalCartCard = ({img, name, price, quantity, id}) => {
 
@@ -43,7 +42,7 @@ const ModalCartCard = ({img, name, price, quantity, id}) => {
           
         </Increase>
         <Count>{quantity}</Count>
-        <Increase onClick={() => dispatch(addItemToCart({img, name, price, quantity, id}))}>
+        <Increase onClick={() => dispatch(addToCart({img, name, price, quantity, id}))}>
           <BsPlusLg />
         </Increase>
       </QuantityContainerStyled>

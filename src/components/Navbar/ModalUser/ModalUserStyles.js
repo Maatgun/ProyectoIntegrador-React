@@ -22,6 +22,11 @@ export const ModalContainerStyled = styled(motion.div)`
       opacity: 90%;
     }
   }
+
+  @media (max-width: 351px) {
+    width: 80%;
+    border-radius: 1rem;
+  }
 `;
 
 export const LinkStyled = styled(Link)`

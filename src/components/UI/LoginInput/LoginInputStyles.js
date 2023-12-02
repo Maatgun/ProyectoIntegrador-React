@@ -9,7 +9,7 @@ export const LoginInputStyled = styled.input`
   width: 300px;
   padding: 1.5rem 2rem;
   color:white;
-  background: #63c363;
+  background: white;
   border-radius: 15px;
   border: ${({ isError }) => (isError ? '1px solid #fb103d ' : 'none')};
   outline: none;
