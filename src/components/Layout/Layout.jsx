@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
 
 const LayoutContainerStyled = styled.div`
  

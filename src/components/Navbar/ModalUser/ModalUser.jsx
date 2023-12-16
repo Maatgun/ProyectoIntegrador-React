@@ -17,7 +17,7 @@ const ModalUser = () => {
             exit={{ translateX: 600 }}
             transition={{ duration: 0.5 }}
             key="cart-user"
-            onClick={(e) => e.stopPropagation()} // Prevent clicks inside the modal from closing it
+            onClick={(e) => e.stopPropagation()} 
           >
             <UsernameStyled>
               <span>Hola, Bienvenido/a {currentUser?.nombre}</span>
