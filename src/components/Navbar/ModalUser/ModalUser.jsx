@@ -23,6 +23,7 @@ const ModalUser = () => {
               <span>Hola, Bienvenido/a {currentUser?.nombre}</span>
             </UsernameStyled>
             <HrStyled />
+            <LinkStyled to="/mis-ordenes">Mis Ordenes</LinkStyled>
             <span onClick={() => {
               dispatch(setCurrentUser(null))
               dispatch(toggleHiddenMenu())

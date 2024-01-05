@@ -21,7 +21,7 @@ const Felicitaciones = () => {
           <TitleStyled>¡Compra Exitosa!</TitleStyled>
           <p>Tu pedido ya esta listo para ser enviado !</p>
         </ContainerInfoStyled>
-        <Button onClick={() => navigate('/')}>Volver</Button>
+        <Button onClick={() => navigate('/mis-ordenes')}>Volver</Button>
       </TextStyled>
     </div>
   );
