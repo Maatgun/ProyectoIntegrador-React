@@ -43,8 +43,6 @@ const MisOrdenes = () => {
         </MisOrdenesBtnContainerStyled>
       </MisOrdenesContainerStyled>
       <MisOrdenesPatternStyled
-        src="https://res.cloudinary.com/dcatzxqqf/image/upload/v1656648434/coding/NucbaZappi/Assets/Pattern_lt5uru.png"
-        alt=""
       />
     </>
   );
