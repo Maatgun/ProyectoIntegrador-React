@@ -15,7 +15,3 @@ export const loginInitialValues = {
     email: '',
     password: ''
 }
-
-export const validateInitialValues = {
-    code: '',
-  };

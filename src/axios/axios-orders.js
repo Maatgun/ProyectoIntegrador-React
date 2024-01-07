@@ -7,6 +7,8 @@ export const getOrders = async (dispatch, currentUser) => {
 
     dispatch(fetchOrdersStart())
 
+    console.log(currentUser.token);
+
     try {
         const orders = await axios.get(`${BASE_URL}orders`, {
             headers: {
@@ -18,7 +20,7 @@ export const getOrders = async (dispatch, currentUser) => {
         }
     } catch (error) {
         console.log(error);
-        dispatch(fetchOrdersFail("Upss, algo salío mal"))
+        dispatch(fetchOrdersFail("Upss, algo salío mal !"))
     }
 }
 

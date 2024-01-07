@@ -1,3 +1,3 @@
-export * from "./Categories";
-export * from "./Productos";
+export * from "./Categorias"
 export * from "./MisOrdenes"
+export * from "./Productos"

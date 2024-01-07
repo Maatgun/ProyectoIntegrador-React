@@ -1,6 +1,6 @@
 export const products = [{
     id: 1,
-    name:"Alimento Dog Chow Perro Adulto de 4kg",
+    title:"Alimento Dog Chow Perro Adulto de 4kg",
     img: "https://res.cloudinary.com/dvj7ctojo/image/upload/v1690914762/dogchow-4_txlb8e.jpg",
     price:1500,
     category:"Alimento",
@@ -8,7 +8,7 @@ export const products = [{
  
  {
      id: 2,
-     name:"Dog Chow Perros Adultos Razas Medianas y Grandes 17kg",
+     title:"Dog Chow Perros Adultos Razas Medianas y Grandes 17kg",
      img:"https://res.cloudinary.com/dvj7ctojo/image/upload/v1690914762/dogchow-5_mfhopg.jpg",
      price:2000,
      category:"Alimento",
@@ -16,7 +16,7 @@ export const products = [{
  
  {
      id: 3,
-     name:"Dog Chow Triple Proteína Adultos de 2kg",
+     title:"Dog Chow Triple Proteína Adultos de 2kg",
      img:"https://res.cloudinary.com/dvj7ctojo/image/upload/v1690914763/dogchow-6_cs08tg.jpg",
      price:999,
      category:"Alimento",
@@ -24,7 +24,7 @@ export const products = [{
  
  {
      id: 4,
-     name: "Dog Chow Perros Adultos Essencial 1.5kg",
+     title: "Dog Chow Perros Adultos Essencial 1.5kg",
      img:"https://res.cloudinary.com/dvj7ctojo/image/upload/v1690914763/esencial-adultos_x3gkb3.jpg",
      price:750,
      category:"Alimento",

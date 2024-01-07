@@ -17,11 +17,10 @@ const CardResumen = ({name, quantity, img, price}) => {
         />
         <div>
           <h3>{name}</h3>
-          <p>{desc}</p>
         </div>
       </ProductLeftStyled>
       <PriceContainerStyled>
-        <p></p>
+        <p>3U</p>
         <ProductPriceStyled>{formatPrice(price * quantity)}</ProductPriceStyled>
       </PriceContainerStyled>
     </ProductStyled>
