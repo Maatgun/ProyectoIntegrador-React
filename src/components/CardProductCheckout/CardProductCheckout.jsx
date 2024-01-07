@@ -18,14 +18,14 @@ import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../../redux/carrito/cartSlice';
 import { IoMdTrash } from 'react-icons/io';
 
-const CardProductCheckout = ({img, name, price, quantity, id}) => {
+const CardProductCheckout = ({img, title, price, quantity, id}) => {
 
   const dispatch = useDispatch();
 
   return (
     <CardContainerStyled>
       <CardInfoStyled>
-        <ProductTitleStyled>{name}</ProductTitleStyled>
+        <ProductTitleStyled>{title}</ProductTitleStyled>
         <PriceStyled>{formatPrice(price)}</PriceStyled>
       </CardInfoStyled>
       <QuantityContainerStyled>
@@ -38,7 +38,7 @@ const CardProductCheckout = ({img, name, price, quantity, id}) => {
           }
         </Increase>
         <Count>{quantity}</Count>
-        <Increase onClick={() => dispatch(addToCart({img, name, price, quantity, id}))}>
+        <Increase onClick={() => dispatch(addToCart({img, title, price, quantity, id}))}>
           <BsPlusLg />
         </Increase>
       </QuantityContainerStyled>
