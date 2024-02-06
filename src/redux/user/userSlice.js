@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
     currentUser: null,
-    hiddenMenu: false,
+    hiddenMenu: true,
 };
 
 const userSlice = createSlice({
@@ -15,6 +15,12 @@ const userSlice = createSlice({
                 currentUser: action.payload,
             };
         },
+
+        setVerified: state => {
+            if (state.currentUser) {
+              state.currentUser.verified = true;
+            }
+          },
 
         toggleHiddenMenu: (state) => {
             return {

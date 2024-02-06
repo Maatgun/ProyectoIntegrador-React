@@ -28,3 +28,15 @@ export const loginUser = async (email, password) => {
     }
 
 }
+
+export const verifyUser = async (code) => {
+    try {
+        const response = await axios.post(`${BASE_URL}auth/validate`, {
+            code
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        return alert(error.response.data.msg);
+    }
+}

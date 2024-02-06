@@ -30,6 +30,12 @@ export const ModalContainerStyled = styled(motion.div)`
 `;
 
 export const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
   &:hover {
     opacity: 90%;
   }

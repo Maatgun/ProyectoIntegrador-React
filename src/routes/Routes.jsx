@@ -12,6 +12,7 @@ import Felicitaciones from '../pages/Felicitaciones/Felicitaciones'
 import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute'
 import Checkout from '../pages/Checkout/Checkout'
 import Resumen from '../pages/Resumen/Resumen'
+import Validate from '../pages/Validate/Validate'
 
 
 const Routes = () => {
@@ -25,6 +26,7 @@ const Routes = () => {
         <Route path ='/login'element={<Login/>}/>
         <Route path="/register" element={<Register />} />
         <Route path="/mis-ordenes" element={<MisOrdenes />} />
+        <Route path="/Validate" element={<Validate />} />
         <Route path="/resumen" element={<Resumen />} />
         <Route path="/felicitaciones" element={<Felicitaciones />} />
 
